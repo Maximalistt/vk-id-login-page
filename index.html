@@ -36,8 +36,14 @@
     
       function vkidOnSuccess(data) {
   alert('Авторизация прошла! Вот данные VK:\n' + JSON.stringify(data, null, 2));
-  // Для теста: можешь добавить отправку на backend еще раз, если надо
+  // Отправить данные VK на production webhook n8n:
+  fetch('https://ekasuteguer.beget.app/webhook-test/bec155f4-baf3-4ad6-b008-cb6007d3c237?type=vk', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
 }
+
 
     
       function vkidOnError(error) {
